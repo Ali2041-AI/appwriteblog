@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
+import ScrollToTop from "./ScrollToTop";
 
 function PostForm({ post }) {
     const { register, handleSubmit, setValue, getValues, watch, control } = useForm({
@@ -76,6 +77,8 @@ function PostForm({ post }) {
   
     return (
      <>
+        <ScrollToTop />
+
      {loading
       ?    <div className="flex justify-center py-24 items-center"><ScaleLoader color="#7321B8" /></div>   
      :

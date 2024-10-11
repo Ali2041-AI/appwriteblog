@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
+import ScrollToTop from "./ScrollToTop";
 
 function Post() {
     const { slug } = useParams();
@@ -54,6 +55,7 @@ function Post() {
     return (
 
         <>
+        <ScrollToTop />
         {loading
         ? <div className="py-32">
             <ClipLoader color="#7522BB" />
