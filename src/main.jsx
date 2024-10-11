@@ -55,7 +55,6 @@ const route=createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <RouterProvider router={route} >
-    <ScrollToTop />
     </RouterProvider>  
   </Provider>,
 )
