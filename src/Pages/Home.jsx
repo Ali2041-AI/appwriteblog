@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 
 function Home() {
     const dispatch = useDispatch();
-    const [posts, setPosts] = useState([]);
+    const [post, setPosts] = useState([]);
+    const posts=post.slice().reverse();
     const userLogInStatus = useSelector((state) => state.auth.logInStatus);
 
     useEffect(() => {
@@ -33,9 +34,7 @@ function Home() {
                 });
         }
     }, [userLogInStatus]);
-    useEffect(()=>{
-        posts.reverse();
-    },[posts])
+   
 
     return (
         <>
