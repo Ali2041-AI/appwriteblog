@@ -4,9 +4,10 @@ import Select from "./Select";
 import RTE from "./RTE";
 import Button from "./Button";
 import postService from "../appWrite/postService";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 
 function PostForm({ post }) {
     const { register, handleSubmit, setValue, getValues, watch, control } = useForm({
@@ -19,8 +20,10 @@ function PostForm({ post }) {
     });
     const userData = useSelector((state) => state.auth.userData);
     const navigate = useNavigate();
+    const [loading,setLoading]=useState(false);
   
     const submit = async (data) => {
+      setLoading(true);
       if (post) {
         try {
           await postService.deletePost(post.$id);
@@ -28,6 +31,7 @@ function PostForm({ post }) {
           data.slug = post.$id;
         } catch (error) {
           console.log(error);
+          setLoading(false);
         }
       }
       const file = data?.image[0] ? await postService.uploadImage(data.image[0]) : null;
@@ -39,9 +43,14 @@ function PostForm({ post }) {
             userID: userData.$id,
             featuredImage: fileId,
           });
-          if (db) navigate(`/post/${data.slug}`);
+          if (db) {
+            navigate(`/post/${data.slug}`)
+            setLoading(false);
+          };
         } catch (error) {
           console.log(error);
+          setLoading(false);
+
         }
       }
     };
@@ -66,6 +75,14 @@ function PostForm({ post }) {
     }, [watch, setValue, slugTransform]);
   
     return (
+     <>
+     {loading
+      ?    <div className="flex justify-center py-24 items-center"><ScaleLoader color="#7321B8" /></div>   
+     :
+     
+
+
+
       <form
         onSubmit={handleSubmit(submit)}
         className="flex my-6 flex-col lg:flex-row justify-between lg:space-x-8"
@@ -123,6 +140,10 @@ function PostForm({ post }) {
           </Button>
         </div>
       </form>
+     }
+
+     </>
+
     );
   }
   
