@@ -34,9 +34,8 @@ function Login() {
   return (
     <>
       {loading && error === "" ? (
-        <div className="flex justify-center py-24 items-center">
-          <MoonLoader color="#744CEC" />
-        </div>
+          <div className="flex justify-center py-24 items-center"><MoonLoader color="#744CEC" /></div>
+        
       ) : (
         <div className="flex items-center w-full justify-center py-[90px] bg-gray-100">
           <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-xl border border-gray-200">
