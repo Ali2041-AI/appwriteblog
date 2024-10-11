@@ -33,6 +33,9 @@ function Home() {
                 });
         }
     }, [userLogInStatus]);
+    useEffect(()=>{
+        posts.reverse();
+    },[posts])
 
     return (
         <>
