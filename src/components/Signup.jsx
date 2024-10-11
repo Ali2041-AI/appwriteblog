@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import auth from '../appWrite/auth';
 import { Link } from "react-router-dom";
-import { BeatLoader,MoonLoader } from "react-spinners";
+import { MoonLoader } from "react-spinners";
 import { useForm } from "react-hook-form";
 function Signup(){
     const navigate=useNavigate();
@@ -41,7 +41,7 @@ function Signup(){
     return (
         <>
         {
-          loading && error===""? <div className="flex justify-center items-center"><MoonLoader color="#744CEC" /></div>
+          loading && error===""? <div className="flex justify-center my-16 items-center"><MoonLoader color="#744CEC" /></div>
           : <div className="flex w-full  items-center justify-center">
           <div
             className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}

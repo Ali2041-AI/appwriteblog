@@ -12,7 +12,7 @@ import AuthLayout from './components/AuthLayout.jsx'
 import AddPost from './components/AddPost.jsx'
 import Post from  './components/Post.jsx'
 import EditPost from './components/EditPost.jsx'
-import ScrollToTop from './components/ScrollToTop.jsx'
+
 
 const route=createBrowserRouter([
   {
